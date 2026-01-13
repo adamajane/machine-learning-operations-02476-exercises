@@ -1,6 +1,6 @@
 from torch.utils.data import Dataset
 
-from data import MyDataset
+from mlops_mnist_classifier.data import MyDataset
 
 
 def test_my_dataset():

@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import torch
 import typer
-from data import corrupt_mnist
-from model import CNNModel
+from mlops_mnist_classifier.data import corrupt_mnist
+from mlops_mnist_classifier.model import CNNModel
 
 DEVICE = torch.device(
     "cuda"
