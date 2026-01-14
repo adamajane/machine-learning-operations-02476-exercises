@@ -5,14 +5,17 @@ RUN apt update && \
     apt install --no-install-recommends -y build-essential gcc && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /
+
 COPY uv.lock uv.lock
 COPY pyproject.toml pyproject.toml
-COPY README.md README.md
+
+ENV UV_LINK_MODE=copy
+RUN --mount=type=cache,target=/root/.cache/uv uv sync --locked --no-install-project
+
 COPY src/ src/
 COPY data/ data/
+COPY README.md README.md
 COPY LICENSE LICENSE
-
-WORKDIR /
-RUN uv sync --locked --no-cache --no-install-project
 
 ENTRYPOINT ["uv", "run", "src/mlops_mnist_classifier/train.py"]

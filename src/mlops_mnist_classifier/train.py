@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import torch
 import typer
 from data import corrupt_mnist
